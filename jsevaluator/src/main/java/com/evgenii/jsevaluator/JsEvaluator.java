@@ -1,7 +1,6 @@
 package com.evgenii.jsevaluator;
 
 import android.content.Context;
-import android.support.annotation.VisibleForTesting;
 import android.webkit.WebView;
 
 import com.evgenii.jsevaluator.interfaces.CallJavaResultInterface;
@@ -106,7 +105,7 @@ public class JsEvaluator implements CallJavaResultInterface, JsEvaluatorInterfac
 		mHandler.post(new Runnable() {
 			@Override
 			public void run() {
-				if(value!=null && value.startsWith(JS_ERROR_PREFIX)) {
+				if (value != null && value.startsWith(JS_ERROR_PREFIX)) {
 					callbackLocal.onError(value.substring(JS_ERROR_PREFIX.length()));
 				} else {
 					callbackLocal.onResult(value);
@@ -115,17 +114,17 @@ public class JsEvaluator implements CallJavaResultInterface, JsEvaluatorInterfac
 		});
 	}
 
-	@VisibleForTesting
+	// @VisibleForTesting
 	public void setHandler(HandlerWrapperInterface handlerWrapperInterface) {
 		mHandler = handlerWrapperInterface;
 	}
 
-	@VisibleForTesting
+	// @VisibleForTesting
 	public void setWebViewWrapper(WebViewWrapperInterface webViewWrapper) {
 		mWebViewWrapper = webViewWrapper;
 	}
 
-	@VisibleForTesting
+	// @VisibleForTesting
 	public JsCallback getCallback() {
 		return callback.get();
 	}
